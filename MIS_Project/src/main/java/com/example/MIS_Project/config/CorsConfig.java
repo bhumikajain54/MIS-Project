@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.example.MIS_Project")
 @EntityScan(basePackages = "com.example.MIS_Project")
+@SuppressWarnings("null")
 public class CorsConfig {
 
     @Bean

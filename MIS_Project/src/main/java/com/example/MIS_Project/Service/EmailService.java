@@ -15,6 +15,7 @@ import jakarta.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
 
 @Service
+@SuppressWarnings("null")
 public class EmailService {
 
     @Autowired

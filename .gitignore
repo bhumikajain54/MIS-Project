@@ -1,9 +1,0 @@
-node_modules/
-target/
-.angular/
-dist/
-*.zip
-.idea/
-.vscode/
-*.class
-*.log

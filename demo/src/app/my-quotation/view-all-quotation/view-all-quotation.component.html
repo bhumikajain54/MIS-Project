@@ -1,0 +1,132 @@
+
+    <div class="container mt-4" *ngIf="policies">
+      <h2>Policy Management</h2>
+      <form #policyForm="ngForm" (ngSubmit)="onSearch()">
+        <div class="row mb-4">
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Keyword</label>
+            <input type="text" class="form-control" name="keyword" [(ngModel)]="keyword" placeholder="Enter Keyword" />
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Product Type</label>
+            <select class="form-select" name="productType" [(ngModel)]="productTypes">
+              <option value="">Please Select</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">From Date</label>
+            <input type="date" class="form-control" name="fromDate" [(ngModel)]="fromDate" />
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">To Date</label>
+            <input type="date" class="form-control" name="toDate" [(ngModel)]="toDate" />
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Insurance Company</label>
+            <select class="form-select" name="insuranceCompany" [(ngModel)]="insuranceCompany">
+              <option value="">Please Select</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Level 2</label>
+            <select class="form-select" name="level2" [(ngModel)]="level2">
+              <option value="">Select Level 2</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Level 3</label>
+            <select class="form-select" name="level3" [(ngModel)]="level3">
+              <option value="">Select Level 3</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Level 4</label>
+            <select class="form-select" name="level4" [(ngModel)]="level4">
+              <option value="">Select Level 4</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Level 5</label>
+            <select class="form-select" name="level5" [(ngModel)]="level5">
+              <option value="">Select Level 5</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">Issue By</label>
+            <select class="form-select" name="issueBy" [(ngModel)]="issueBy">
+              <option value="All Users">All Users</option>
+            </select>
+          </div>
+    
+          <div class="col-md-3 mb-3">
+            <label class="form-label font-semibold">POSP</label>
+            <select class="form-select" name="posp" [(ngModel)]="posp">
+              <option value="">Select POSP</option>
+            </select>
+          </div>
+    
+          <div class="col-12 mt-3 d-flex gap-2">
+            <button type="button" class="btn btn-primary px-4 shadow-sm" (click)="searchPolicies()">Search</button>
+            <button type="button" class="btn btn-secondary px-4 shadow-sm" (click)="exportPolicies()">Export</button>
+            <div class="file-upload">
+              <!-- Hidden file input for Excel or PDF files -->
+              <input type="file" #fileInput (change)="onFileSelected($event)" accept=".xlsx, .xls, .pdf" style="display: none;" />
+              <!-- Button to trigger file selection -->
+              <button type="button" class="btn btn-info text-white px-4 shadow-sm" (click)="fileInput.click()">Import</button>
+            </div>
+            <button type="reset" class="btn btn-danger px-4 shadow-sm">Reset</button>
+          </div>
+        </div>
+      </form>
+    
+      <!-- Search Results Section -->
+      <div class="card premium-card mt-5 shadow-sm border-0">
+        <div class="card-header bg-premium-dark text-white rounded-t-lg d-flex justify-content-between align-items-center p-3">
+          <h5 class="mb-0 font-semibold"><i class="fas fa-list-alt me-2"></i> Quotation Results</h5>
+          <span class="badge bg-primary px-3 py-2" style="font-size: 0.9rem;">Total Count: {{ policyCount }}</span>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover table-striped mb-0">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Product Type</th>
+              <th>Reference Number</th>
+              <th>Client Name</th>
+              <th>Mobile</th>
+              <th>Created By</th>
+              <th>Created On</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of quotations; let i = index">
+              <td>{{i + 1}}</td>
+              <td>{{policy.productType}}</td>
+              <td>{{policy.referenceNumber}}</td>
+              <td>{{policy.customerName}}</td>
+              <td>{{policy.mobile}}</td>
+              <td>{{policy.createdBy}}</td>
+              <td>{{ policy.createdOn | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+              <td><button (click)="viewPolicy(policy)" class="btn">View</button></td>
+            </tr>
+            <tr *ngIf="!quotations || quotations.length === 0">
+              <td colspan="8" class="text-center py-5 text-muted">
+                <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                <h5 class="font-semibold">No Record/s Available</h5>
+                <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      

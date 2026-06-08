@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <div class="mb-4">
+    <h1>User Management</h1>
+  </div>
+  <div class="premium-card p-4">
+    <div class="mb-4">
+      <h2>Add New User</h2>
+    </div>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" name="name" class="form-control" type="text" ngModel required />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" name="email" class="form-control" type="email" ngModel required />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input id="mobile" name="mobile" class="form-control" type="tel" ngModel required />
+        </div>
+        <div class="col-md-6">
+          <label for="role" class="form-label">Role</label>
+          <select id="role" name="role" class="form-select" ngModel required>
+            <option value="">Select Role</option>
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="password" class="form-label">Password</label>
+          <input id="password" name="password" class="form-control" type="password" ngModel required />
+        </div>
+        <div class="col-md-6">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input id="confirmPassword" name="confirmPassword" class="form-control" type="password" ngModel required />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="document" class="form-label">Document</label>
+          <input id="document" type="file" class="form-control" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+        </div>
+        <div class="col-md-6">
+          <label for="status" class="form-label">Status</label>
+          <select id="status" name="status" class="form-select" ngModel required>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-12 d-flex gap-2 justify-content-center">
+          <button type="submit" class="btn btn-primary px-4 shadow-sm" [disabled]="userForm.invalid">Add</button>
+          <button type="button" class="btn btn-secondary px-4 shadow-sm" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

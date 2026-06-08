@@ -1,0 +1,137 @@
+<div class="container mt-4">
+  <div class="content">
+    <h1>Renewal Management</h1>
+    <form [formGroup]="renewalForm">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="keyword" class="form-label">Keyword</label>
+          <input formControlName="keyword" type="text" class="form-control" id="keyword" placeholder="Enter keyword">
+        </div>
+        <div class="col-md-4">
+          <label for="policyExpiryFromDate" class="form-label">Policy Expiry From Date</label>
+          <input formControlName="policyExpiryFromDate" type="date" class="form-control" id="policyExpiryFromDate">
+        </div>
+        <div class="col-md-4">
+          <label for="policyExpiryToDate" class="form-label">Policy Expiry To Date</label>
+          <input formControlName="policyExpiryToDate" type="date" class="form-control" id="policyExpiryToDate">
+        </div>
+        <div class="col-md-4">
+          <label for="productType" class="form-label">Product Type</label>
+          <select formControlName="productType" id="productType" class="form-select">
+            <option value="">Please Select</option>
+            <option value="type1">Type 1</option>
+            <option value="type2">Type 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="insuranceCompany" class="form-label">Insurance Company</label>
+          <select formControlName="insuranceCompany" id="insuranceCompany" class="form-select">
+            <option value="">Please Select</option>
+            <option value="company1">Company 1</option>
+            <option value="company2">Company 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="issueBy" class="form-label">Issue By</label>
+          <select formControlName="issueBy" id="issueBy" class="form-select">
+            <option>All Users</option>
+            <option>User 1</option>
+            <option>User 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="level2" class="form-label">Level 2</label>
+          <select formControlName="level2" id="level2" class="form-select">
+            <option value="">Select Level 2</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="level3" class="form-label">Level 3</label>
+          <select formControlName="level3" id="level3" class="form-select">
+            <option value="">Select Level 3</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="level4" class="form-label">Level 4</label>
+          <select formControlName="level4" id="level4" class="form-select">
+            <option value="">Select Level 4</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="level5" class="form-label">Level 5</label>
+          <select formControlName="level5" id="level5" class="form-select">
+            <option value="">Select Level 5</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="posp" class="form-label">POSP</label>
+          <select formControlName="posp" id="posp" class="form-select">
+            <option value="">Select POSP</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="policySource" class="form-label">Policy Source</label>
+          <select formControlName="policySource" id="policySource" class="form-select">
+            <option value="">Select Policy Source</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="numberOfDays" class="form-label">Number of Days</label>
+          <input formControlName="numberOfDays" type="number" class="form-control" id="numberOfDays">
+        </div>
+      </div>
+      <div class="row mt-4 mb-2">
+        <div class="col-md-12 mt-2 d-flex gap-2">
+          <button type="button" class="btn btn-primary px-4 shadow-sm" (click)="onSearchRenewal()">Search</button>
+          <button type="button" class="btn btn-secondary px-4 shadow-sm" (click)="ExportPolicies()">Export</button>
+          <div class="file-upload">
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept=".xlsx, .xls, .pdf" style="display: none;">
+            <button type="button" class="btn btn-info text-white px-4 shadow-sm" (click)="fileInput.click()">Import</button>
+          </div>
+          <button type="button" class="btn btn-danger px-4 shadow-sm" (click)="onResetRenewalForm()">Reset</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Search Results Section -->
+    <div class="card premium-card mt-5 shadow-sm border-0">
+      <div class="card-header bg-premium-dark text-white rounded-t-lg d-flex justify-content-between align-items-center p-3">
+        <h5 class="mb-0 font-semibold"><i class="fas fa-list-alt me-2"></i> Renewal Results</h5>
+        <span class="badge bg-primary px-3 py-2" style="font-size: 0.9rem;">Total Count: {{ policyCount }}</span>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-hover table-striped mb-0">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Policy Number</th>
+              <th>Client Name</th>
+              <th>Insurance Companies</th>
+              <th>Policy Start Date</th>
+              <th>Policy Expiry Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of posts; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ policy.policyNumber }}</td>
+              <td>{{ policy.clientName }}</td>
+              <td>{{ policy.insuranceCompanies }}</td>
+              <td>{{ policy.policyStartDate | date:'yyyy-MM-dd' }}</td>
+              <td>{{ policy.policyExpiryDate | date:'yyyy-MM-dd' }}</td>
+              <td><button (click)="viewPolicyDetails(policy)" class="btn btn-sm btn-primary">View</button></td>
+            </tr>
+            <tr *ngIf="!posts || posts.length === 0">
+              <td colspan="7" class="text-center py-5 text-muted">
+                <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                <h5 class="font-semibold">No Record/s Available</h5>
+                <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

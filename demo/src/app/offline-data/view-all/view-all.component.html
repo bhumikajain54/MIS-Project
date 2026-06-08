@@ -1,0 +1,270 @@
+<!-- 
+<div class="d-flex">
+  <!-- Sidebar 
+  
+  <div class="container mt-4">
+    <h1>{{ title }}</h1>
+
+    <!-- Form Section 
+    <div class="section">
+      <h3>Filter Policies</h3>
+      <div class="form-row">
+        <!-- Keyword
+        <div class="form-group">
+          <label for="keyword">Keyword</label>
+          <input
+            type="text"
+            id="keyword"
+            [(ngModel)]="keyword"
+            placeholder="Keyword"
+          />
+        </div>
+
+        <!-- From Date 
+        <div class="form-group">
+          <label for="from-date">From Date</label>
+          <input
+            type="date"
+            id="from-date"
+            [(ngModel)]="fromDate"
+            placeholder="DD-MM-YYYY"
+          />
+        </div>
+
+        <!-- To Date 
+        <div class="form-group">
+          <label for="to-date">To Date</label>
+          <input type="date" id="to-date" placeholder="DD-MM-YYYY" />
+        </div>
+      </div>
+
+      <!-- Additional form fields with [(ngModel)] binding 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="product-type">Product Type</label>
+          <select id="product-type" [(ngModel)]="productType">
+            <option>Please Select</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="issueBy">Issue By</label>
+          <select id="issueBy" [(ngModel)]="issueBy">
+            <option>All Users</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="zone">Zone</label>
+          <select id="zone">
+            <option>Select Zone</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="region">Region</label>
+          <select id="region" [(ngModel)]="region">
+            <option>Select Region</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Branch">Branch</label>
+          <select id="Branch" [(ngModel)]="branch">
+            <option>Select Branch</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="RM/SO">RM/SO</label>
+          <select id="RM/SO" [(ngModel)]="RM">
+            <option>Select RM/SO</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="POSP">POSP</label>
+          <select id="POSP" [(ngModel)]="posp">
+            <option>Select POSP</option>
+          </select>
+        </div>
+        
+      </div>
+
+      <!-- Buttons 
+      <div class="form-row">
+        <button type="button" (click)="submitForm()">Search</button>
+        <button type="button" (click)="ExportPolicies()">Export</button>
+        <div class="file-upload">
+          <!-- Hidden file input for Excel or PDF files 
+          <input type="file" #fileInput (change)="onFileSelected($event)" accept=".xlsx, .xls, .pdf" style="display: none;" />
+          
+          <!-- Button to trigger file selection
+          <button type="button" (click)="fileInput.click()">Import</button>
+        </div>
+        <button type="reset">Reset</button>
+      </div>
+    </div>
+
+    <!-- Result Section 
+    <div class="section">
+      <h3>Policy Results</h3>
+      <p>Count: {{ policyCount }}</p>
+      <table class="table table-hover table-striped premium-card mt-4">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Policy Number</th>
+            <th>Client Name</th>
+            <th>Insurance Companies</th>
+            <th>Policy Start Date</th>
+            <th>Policy Expiry Date</th>
+            <th>Action</th>
+          </tr>        
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of posts; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ policy.policyNumber }}</td>
+            <td>{{ policy.clientName }}</td>
+            <td>{{ policy.insuranceCompanies }}</td>
+            <td>{{ policy.policyStartDate | date:'yyyy-MM-dd' }}</td>
+            <td>{{ policy.policyExpiryDate | date:'yyyy-MM-dd' }}</td>
+            <td><button (click)="viewPolicyDetails(policy)">View</button></td>
+          </tr>        
+        </tbody>
+      </table>
+    </div>    
+  </div>
+</div> -->
+
+
+<div class="d-flex">
+  <!-- Sidebar -->
+  
+
+  <div class="container mt-4">
+    <h1>{{ title }}</h1>
+
+    <!-- Filter Policies Form -->
+    <div class="section">
+      <h3>Filter Policies</h3>
+      <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="keyword">Keyword</label>
+          <input class="form-control" type="text" id="keyword" [(ngModel)]="keyword" placeholder="Keyword" />
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="from-date">From Date</label>
+          <input class="form-control" type="date" id="from-date" [(ngModel)]="fromDate" placeholder="DD-MM-YYYY" />
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="to-date">To Date</label>
+          <input class="form-control" type="date" id="to-date" placeholder="DD-MM-YYYY" />
+        </div>
+      
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="product-type">Product Type</label>
+          <select class="form-select" id="product-type" [(ngModel)]="productType">
+            <option>Please Select</option>
+            <option *ngFor="let item of productTypes">
+              {{item}}
+            </option>    
+          </select>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="issuedBy">Issue By</label>
+          <select class="form-select" id="issuedBy" [(ngModel)]="issueBy">
+            <option value="All Users">All Users</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+          </select>        
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="zone">Zone</label>
+          <select class="form-select" id="zone" [(ngModel)]="zone">
+              <option value="">Select Zone</option>
+              <option *ngFor="let z of zoneList" [value]="z">{{ z }}</option>
+          </select>
+        </div>
+      
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="region">Region</label>
+          <select class="form-select" id="region" [(ngModel)]="region">
+              <option value="">Select Region</option>
+              <option *ngFor="let r of regionList" [value]="r">{{ r }}</option>
+          </select>
+        </div>
+      
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="branch">Branch</label>
+          <select class="form-select" id="branch" [(ngModel)]="branch">
+              <option value="">Select Branch</option>
+              <option *ngFor="let b of branchList" [value]="b">{{ b }}</option>
+          </select>
+        </div>
+      
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="RM/SO">RM/SO</label>
+          <select class="form-select" id="RM/SO" [(ngModel)]="RM">
+              <option value="">Select RM/SO</option>
+              <option *ngFor="let rm of rmList" [value]="rm">{{ rm }}</option>
+          </select>
+        </div>
+      
+        <div class="col-md-3 mb-3">
+          <label class="form-label font-semibold" for="POSP">POSP</label>
+          <select class="form-select" id="POSP" [(ngModel)]="posp">
+              <option value="">Select POSP</option>
+              <option *ngFor="let p of pospList" [value]="p">{{ p }}</option>
+          </select>
+        </div>
+      
+        <div class="col-12 mt-3 d-flex gap-2">
+          <button type="button" class="btn btn-primary px-4 shadow-sm" (click)="submitForm()">Search</button>
+          <button type="button" class="btn btn-secondary px-4 shadow-sm" (click)="ExportPolicies()">Export</button>
+          <div class="file-upload">
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept=".xlsx, .xls, .pdf" style="display: none;" />
+            <button type="button" class="btn btn-info text-white px-4 shadow-sm" (click)="fileInput.click()">Import</button>
+          </div>
+          <button type="reset" class="btn btn-danger px-4 shadow-sm">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy Results Table -->
+    <div class="card premium-card mt-5 shadow-sm border-0">
+      <div class="card-header bg-premium-dark text-white rounded-t-lg d-flex justify-content-between align-items-center p-3">
+        <h5 class="mb-0 font-semibold"><i class="fas fa-list-alt me-2"></i> Policy Results</h5>
+        <span class="badge bg-primary px-3 py-2" style="font-size: 0.9rem;">Total Count: {{ policyCount }}</span>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-hover table-striped mb-0">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Policy Number</th>
+              <th>Client Name</th>
+              <th>Insurance Companies</th>
+              <th>Policy Start Date</th>
+              <th>Policy Expiry Date</th>
+              <th>Action</th>
+            </tr>        
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of posts; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ policy.policyNumber }}</td>
+              <td>{{ policy.clientName }}</td>
+              <td>{{ policy.insuranceCompanies }}</td>
+              <td>{{ policy.policyStartDate | date:'yyyy-MM-dd' }}</td>
+              <td>{{ policy.policyExpiryDate | date:'yyyy-MM-dd' }}</td>
+              <td><button class="btn btn-sm btn-primary" (click)="viewPolicyDetails(policy)">View</button></td>
+            </tr>
+            <tr *ngIf="!posts || posts.length === 0">
+              <td colspan="7" class="text-center py-5 text-muted">
+                <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                <h5 class="font-semibold">No Record/s Available</h5>
+                <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

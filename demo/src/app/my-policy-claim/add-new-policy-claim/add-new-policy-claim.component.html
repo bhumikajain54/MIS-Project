@@ -1,0 +1,185 @@
+
+<div class="main-layout">
+  <!-- Sidebar -->
+  
+
+  <!-- Main Content Area -->
+  <div class="container">
+    <h2>Add New Claim</h2>
+    <form [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Policy Details Section -->
+      <div class="card premium-card mb-4 shadow-sm">
+        <div class="card-header bg-premium-dark text-white rounded-t-lg">
+          <h5 class="mb-0 font-semibold">Policy Details</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="policyNumber" class="form-label font-semibold">Policy Number*</label>
+              <input class="form-control" id="policyNumber" formControlName="policyNumber" type="text" placeholder="Policy number" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="selectInsurer" class="form-label font-semibold">Select Insurer*</label>
+              <input class="form-control" id="selectInsurer" formControlName="selectInsurer" type="text" placeholder="Select Insurer" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="productType" class="form-label font-semibold">Product Type*</label>
+              <input class="form-control" id="productType" formControlName="productType" type="text" placeholder="Product Type" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="sumInsured" class="form-label font-semibold">Sum Insured / IDV*</label>
+              <input class="form-control" id="sumInsured" formControlName="sumInsured" type="number" placeholder="Sum Insured / IDV" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="policyStartDate" class="form-label font-semibold">Policy Start Date*</label>
+              <input class="form-control" id="policyStartDate" formControlName="policyStartDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="policyEndDate" class="form-label font-semibold">Policy End Date*</label>
+              <input class="form-control" id="policyEndDate" formControlName="policyEndDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle / Policy Details Section -->
+      <div class="card premium-card mb-4 shadow-sm">
+        <div class="card-header bg-premium-dark text-white rounded-t-lg">
+          <h5 class="mb-0 font-semibold">Vehicle / Policy Details</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="claimantName" class="form-label font-semibold">Claimant Name*</label>
+              <input class="form-control" id="claimantName" formControlName="claimantName" type="text" placeholder="Claimant Name" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="claimLorryNumber" class="form-label font-semibold">Claim Lorry Number</label>
+              <input class="form-control" id="claimLorryNumber" formControlName="claimLorryNumber" type="text" placeholder="Claim Lorry Number" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="typeOfClaim" class="form-label font-semibold">Type of Claim*</label>
+              <input class="form-control" id="typeOfClaim" formControlName="typeOfClaim" type="text" placeholder="Type of Claim" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="claimAccidentDate" class="form-label font-semibold">Claim/Accident/Admission Date*</label>
+              <input class="form-control" id="claimAccidentDate" formControlName="claimAccidentDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="claimAmount" class="form-label font-semibold">Claim Amount*</label>
+              <input class="form-control" id="claimAmount" formControlName="claimAmount" type="number" placeholder="Claim Amount" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="surveyorAppointmentDate" class="form-label font-semibold">Surveyor Appointment Date</label>
+              <input class="form-control" id="surveyorAppointmentDate" formControlName="surveyorAppointmentDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="reportSubmittedDate" class="form-label font-semibold">Report Submitted Date (by Surveyor)</label>
+              <input class="form-control" id="reportSubmittedDate" formControlName="reportSubmittedDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="surveyorName" class="form-label font-semibold">Surveyor Name</label>
+              <input class="form-control" id="surveyorName" formControlName="surveyorName" type="text" placeholder="Surveyor Name" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="approvedSettledDate" class="form-label font-semibold">Approved/Settled Date (Insurer)*</label>
+              <input class="form-control" id="approvedSettledDate" formControlName="approvedSettledDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="admissionIntimationDate" class="form-label font-semibold">Date of Admission/Intimation*</label>
+              <input class="form-control" id="admissionIntimationDate" formControlName="admissionIntimationDate" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="dateOfDischarge" class="form-label font-semibold">Date of Discharge*</label>
+              <input class="form-control" id="dateOfDischarge" formControlName="dateOfDischarge" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="approvedClaimAmount" class="form-label font-semibold">Approved Claim Amount*</label>
+              <input class="form-control" id="approvedClaimAmount" formControlName="approvedClaimAmount" type="number" placeholder="Approved Claim Amount" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="claimSubmittedOn" class="form-label font-semibold">Claim Submitted On*</label>
+              <input class="form-control" id="claimSubmittedOn" formControlName="claimSubmittedOn" type="date" placeholder="dd-mm-yyyy" />
+            </div>
+            
+            <div class="col-md-4 mb-3">
+              <label for="level2" class="form-label font-semibold">Level 2</label>
+              <select class="form-select" id="level2" formControlName="level2">
+                <option value="">Select Level 2</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="level3" class="form-label font-semibold">Level 3</label>
+              <select class="form-select" id="level3" formControlName="level3">
+                <option value="">Select Level 3</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="level4" class="form-label font-semibold">Level 4</label>
+              <select class="form-select" id="level4" formControlName="level4">
+                <option value="">Select Level 4</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="level5" class="form-label font-semibold">Level 5</label>
+              <select class="form-select" id="level5" formControlName="level5">
+                <option value="">Select Level 5</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="posp" class="form-label font-semibold">POSP</label>
+              <select class="form-select" id="posp" formControlName="posp">
+                <option value="">Select POSP</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="status" class="form-label font-semibold">Status*</label>
+              <select class="form-select" id="status" formControlName="status">
+                <option value="">Select Status</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="claimDocument" class="form-label font-semibold">Claim Document (.jpg, .png, .pdf)</label>
+              <input class="form-control" id="claimDocument" formControlName="claimDocument" type="file" accept=".jpg, .jpeg, .png, .pdf" />
+            </div>
+
+            <div class="col-md-8 mb-3">
+              <label for="remark" class="form-label font-semibold">Remark*</label>
+              <textarea class="form-control" id="remark" formControlName="remark" placeholder="Remark" rows="1"></textarea>
+            </div>
+            
+            <div class="col-12 mt-3 d-flex gap-2">
+              <button class="btn btn-primary px-4 shadow-sm" type="submit">Save</button>
+              <button class="btn btn-secondary px-4 shadow-sm" type="button" (click)="addDocument()">Add More Document</button>
+              <button class="btn btn-danger px-4 shadow-sm" type="button" (click)="removeDocument()">Remove Last Document</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+<div class="flex h-screen w-full font-sans bg-premium-light overflow-hidden">
+  <!-- Sidebar -->
+  <aside class="w-72 bg-premium-dark text-white flex flex-col h-full shadow-xl z-20">
+      <div class="p-6 border-b border-gray-800 flex items-center justify-center bg-black/20">
+          <img src="../../assets/image/Insurance Png.png" alt="Logo" class="h-14 bg-white/10 p-2 rounded-xl backdrop-blur-sm border border-white/10">
+      </div>
+      <nav class="flex-1 py-6 custom-scrollbar">
+          <ul class="space-y-2 px-4">
+              <li class="group" *ngIf="hasRole(['ADMIN', 'ACCOUNT_MANAGER', 'MAKE_ENTRY'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-database w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>Offline Data</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToViewAll()">View All</a>
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToAddNew()">Add New</a>
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToAddHealth()">Add Health</a>
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToAddOtherOffline()">Add Other Offline</a>
+                  </div>
+              </li>
+              
+              <li class="group" *ngIf="hasRole(['ADMIN', 'USER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-file-contract w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>My Policy</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMyPolicyViewAll()">View All</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN', 'USER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-file-invoice-dollar w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>My Quotation</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMyQuotationViewAll()">View All</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN', 'USER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-sync-alt w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>My Renewals</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMyRenewalsViewAll()">View All</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN', 'VP', 'AVP', 'ACCOUNT_MANAGER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-chart-bar w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>My Reports</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMyReportsViewAll()">POSP Activation Report</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN', 'USER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-save w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>Saved Proposal</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMySavedProposalViewAll()">View All</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN', 'USER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-shield-alt w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>Policy-Claim</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMyPolicyClaimAddNew()">Add New</a>
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToMyPolicyClaimViewAll()">View All</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN', 'ACCOUNT_MANAGER'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-box w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>Product-IC Branch</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToProductICBranchViewAll()">View All</a>
+                  </div>
+              </li>
+
+              <li class="group" *ngIf="hasRole(['ADMIN'])">
+                  <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-premium-primary transition-all duration-300 text-gray-300 hover:text-white font-semibold">
+                      <i class="fas fa-users-cog w-6 opacity-70 group-hover:opacity-100"></i>
+                      <span>User Management</span>
+                      <i class="fas fa-chevron-right ml-auto text-xs opacity-50 transition-transform group-hover:rotate-90"></i>
+                  </a>
+                  <div class="hidden group-hover:block pl-12 pr-4 py-2 mt-1 space-y-1 bg-black/20 rounded-xl">
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToUserManagementAddNew()">Add New</a>
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToUserManagementViewAll()">View All</a>
+                      <a class="block py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer" (click)="redirectToUserManagementPOSP()">POSP</a>
+                  </div>
+              </li>
+          </ul>
+      </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col h-full relative overflow-y-auto main-wrapper bg-gray-50">
+      <!-- Top Header -->
+      <header class="bg-white/90 backdrop-blur-md sticky top-0 z-10 shadow-sm py-4 px-8 flex justify-between items-center border-b border-gray-200">
+          <div class="flex items-center">
+              <h2 class="text-2xl font-bold text-premium-dark mb-0 tracking-tight">{{ pageTitle }}</h2>
+          </div>
+          <div class="flex items-center space-x-6 text-sm font-semibold">
+              <div class="px-5 py-2 bg-gradient-to-r from-premium-light to-white text-premium-primary rounded-full shadow-premium-sm border border-premium-light/50 flex items-center">
+                  <span class="text-gray-500 mr-2">Welcome</span>
+                  <b class="text-premium-dark text-base">{{username}}</b>
+              </div>
+              
+              <a routerLink="/change-password" class="text-gray-500 hover:text-premium-primary transition-colors"><i class="fas fa-key"></i></a>
+              <a routerLink="" class="px-5 py-2 bg-red-50 text-red-600 hover:bg-red-500 hover:text-white rounded-xl transition-all shadow-sm hover:shadow-md font-bold flex items-center gap-2 no-underline cursor-pointer">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+          </div>
+      </header>
+
+      <!-- Main Body -->
+      <main class="main-content">
+          <router-outlet></router-outlet>
+      </main>
+  </div>
+</div>

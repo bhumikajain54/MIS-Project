@@ -1,0 +1,58 @@
+<main class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>POSP User Management</h2>
+    </div>
+
+    <!-- Filter Form -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <label for="keyword" class="form-label font-semibold">Keyword</label>
+            <input type="text" id="keyword" class="form-control" [(ngModel)]="searchKeyword" placeholder="Enter keyword">
+        </div>
+        <div class="col-md-4 d-flex align-items-end gap-2">
+            <button class="btn btn-primary px-4 shadow-sm" (click)="searchUser()">Search</button>
+            <button class="btn btn-danger px-4 shadow-sm" (click)="resetSearch()">Reset</button>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="card premium-card mt-5 shadow-sm border-0">
+        <div class="card-header bg-premium-dark text-white rounded-t-lg d-flex justify-content-between align-items-center p-3">
+            <h5 class="mb-0 font-semibold"><i class="fas fa-user-shield me-2"></i> POSP Users</h5>
+            <span class="badge bg-primary px-3 py-2" style="font-size: 0.9rem;">Total Count: {{ users ? users.length : 0 }}</span>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Last Updated Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.mobile }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="user.status === 'Active' ? 'bg-success' : 'bg-danger'">
+                                {{ user.status }}
+                            </span>
+                        </td>
+                        <td>{{ user.lastUpdated | date:'MMM dd, yyyy hh:mm a' }}</td>
+                    </tr>
+                    <tr *ngIf="!users || users.length === 0">
+                        <td colspan="5" class="text-center py-5 text-muted">
+                            <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                            <h5 class="font-semibold">No Record/s Available</h5>
+                            <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,290 @@
+
+<div class="main-layout">
+  <!-- Sidebar -->
+  
+
+<div class="container">
+  <h1 class="text-end mb-4 text-premium-dark">Offline Policy Management</h1>
+
+  <!-- Customer Details Section -->
+  <div class="premium-card p-4 mb-4">
+    <div class="d-flex align-items-center mb-4 border-bottom pb-2">
+      <h2 class="m-0 fs-5 text-premium-dark">Add New Offline Policy</h2>
+      <span class="text-muted mx-3 fs-5">|</span>
+      <h3 class="mb-3 text-secondary border-bottom pb-2">Customer Details</h3>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label fw-bold mb-1">Proposer Type*</label>
+      <div class="radio-group">
+        <input type="radio" id="individual" name="proposer_type">
+        <label class="form-label fw-bold mb-1" for="individual">Individual</label>
+        <input type="radio" id="corporate" name="proposer_type">
+        <label class="form-label fw-bold mb-1" for="corporate">Corporate</label>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="first-name">First Name*</label>
+        <input type="text" class="form-control" id="first-name" placeholder="First Name">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="last-name">Last Name*</label>
+        <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="mobile">Mobile*</label>
+        <input type="text" class="form-control" id="mobile" placeholder="Mobile">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="email">Email*</label>
+        <input type="email" class="form-control" id="email" placeholder="Email">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="address">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Address">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="state">State</label>
+        <select class="form-select" id="state">
+          <option>Select State</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="city">City</label>
+        <select class="form-select" id="city">
+          <option>Select City</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="pincode">Pincode</label>
+        <input type="text" class="form-control" id="pincode" placeholder="Pincode">
+      </div>
+    </div>
+  </div>
+
+  <!-- Vehicle / Policy Details Section -->
+  <div class="premium-card p-4 mb-4">
+    <h3 class="mb-3 text-secondary border-bottom pb-2">Vehicle / Policy Details</h3>
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="vehicle-type">Vehicle Type*</label>
+        <select class="form-select" id="vehicle-type">
+          <option>Two Wheeler</option>
+          <option>Four Wheeler</option>
+          <option>Commercial Vehicle</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="policy-type">Policy Type*</label>
+        <select class="form-select" id="policy-type">
+          <option>New</option>
+          <option>Renewal</option>
+          <option>Rollover</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="policy-cover">Policy Cover*</label>
+        <select class="form-select" id="policy-cover">
+          <option>Comprehensive</option>
+          <option>Third Party Only</option>
+          <option>Own Damage Only</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="manufacturer">Manufacturer</label>
+        <select class="form-select" id="manufacturer">
+          <option>Select Make</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="model">Model</label>
+        <select class="form-select" id="model">
+          <option>Select Model</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="variant">Variant</label>
+        <select class="form-select" id="variant">
+          <option>Select Variant</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="registration-date">Registration Date</label>
+        <input type="date" class="form-control" id="registration-date">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="registration-number">Registration Number</label>
+        <input type="text" class="form-control" id="registration-number" placeholder="Registration Number">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="engine-number">Engine Number</label>
+        <input type="text" class="form-control" id="engine-number" placeholder="Engine Number">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="chassis-number">Chassis Number</label>
+        <input type="text" class="form-control" id="chassis-number" placeholder="Chassis Number">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="manufacturer-year">Manufacturer Year</label>
+        <input type="text" class="form-control" id="manufacturer-year" placeholder="Manufacturer Year">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="sum-assured">Sum Assured (IDV)</label>
+        <input type="text" class="form-control" id="sum-assured" placeholder="Sum Assured">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="insurance-company">Insurance Company</label>
+        <select class="form-select" id="insurance-company">
+          <option>Select Insurance Company</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="insurance-branch">Insurance Branch</label>
+        <select class="form-select" id="insurance-branch">
+          <option>Select Insurance Branch</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="od-premium">OD Premium</label>
+        <input type="text" class="form-control" id="od-premium" placeholder="OD Premium">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="tp-premium">TP Premium</label>
+        <input type="text" class="form-control" id="tp-premium" placeholder="TP Premium">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="premium-no-gst">Premium without GST</label>
+        <input type="text" class="form-control" id="premium-no-gst" placeholder="Premium without GST">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="gst-amount">GST Amount</label>
+        <input type="text" class="form-control" id="gst-amount" placeholder="GST Amount">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="gross-premium">Gross Premium*</label>
+        <input type="text" class="form-control" id="gross-premium" placeholder="Gross Premium">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="ncb">NCB %</label>
+        <select class="form-select" id="ncb">
+          <option>Select NCB %</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="issue-date">Issue Date</label>
+        <input type="date" class="form-control" id="issue-date">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="policy-start-date">Policy Start Date</label>
+        <input type="date" class="form-control" id="policy-start-date">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="policy-end-date">Policy End Date</label>
+        <input type="date" class="form-control" id="policy-end-date">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="payment-mode">Payment Mode</label>
+        <select class="form-select" id="payment-mode">
+          <option>Select Payment Mode</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="transaction-number">Transaction Number</label>
+        <input type="text" class="form-control" id="transaction-number" placeholder="Transaction Number">
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="bank-name">Bank Name</label>
+        <input type="text" class="form-control" id="bank-name" placeholder="Bank Name">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="beneficiary-name">Beneficiary Name</label>
+        <input type="text" class="form-control" id="beneficiary-name" placeholder="Beneficiary Name">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="remarks">Remarks</label>
+        <textarea class="form-control" id="remarks" placeholder="Remarks"></textarea>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="level-2">Level 2</label>
+        <select class="form-select" id="level-2">
+          <option>Select Level 2</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="level-3">Level 3</label>
+        <select class="form-select" id="level-3">
+          <option>Select Level 3</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="level-4">Level 4</label>
+        <select class="form-select" id="level-4">
+          <option>Select Level 4</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="level-5">Level 5</label>
+        <select class="form-select" id="level-5">
+          <option>Select Level 5</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="posp">POSP</label>
+        <select class="form-select" id="posp">
+          <option>Select POSP</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="policy-number">Policy Number*</label>
+        <input type="text" class="form-control" id="policy-number" placeholder="Policy Number">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-bold mb-1" for="policy-pdf">Policy PDF*</label>
+        <input type="file" class="form-control" id="policy-pdf">
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="row g-3 mb-3">
+    <button type="submit" class="btn btn-primary me-2">Submit</button>
+    <button type="submit" class="btn btn-primary me-2">Save & Send</button>
+  </div>
+</div>

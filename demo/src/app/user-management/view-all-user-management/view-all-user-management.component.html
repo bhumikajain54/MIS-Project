@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>User Management</h2>
+    <button class="btn btn-primary px-4 shadow-sm" (click)="addUser()">Add New User</button>
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <label for="role" class="form-label font-semibold">User Role</label>
+      <select id="role" class="form-select" [(ngModel)]="userRole">
+        <option value="">Select Role</option>
+        <option value="Level 1">Level 1</option>
+        <option value="Level 5">Level 5</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="keyword" class="form-label font-semibold">Keyword</label>
+      <input id="keyword" class="form-control" [(ngModel)]="keyword" placeholder="Enter keyword" />
+    </div>
+    <div class="col-md-4 d-flex align-items-end gap-2">
+      <button class="btn btn-primary px-4 shadow-sm" (click)="searchUsers()">Search</button>
+      <button class="btn btn-secondary px-4 shadow-sm" (click)="exportUsers()">Export</button>
+      <button class="btn btn-danger px-4 shadow-sm" (click)="resetFilters()">Reset</button>
+    </div>
+  </div>
+
+  <!-- Search Results Section -->
+  <div class="card premium-card mt-5 shadow-sm border-0">
+    <div class="card-header bg-premium-dark text-white rounded-t-lg d-flex justify-content-between align-items-center p-3">
+      <h5 class="mb-0 font-semibold"><i class="fas fa-users me-2"></i> User Management Results</h5>
+      <span class="badge bg-primary px-3 py-2" style="font-size: 0.9rem;">Total Count: {{ users ? users.length : 0 }}</span>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-hover table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.mobile }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span class="badge" [ngClass]="user.status === 'Active' ? 'bg-success' : 'bg-danger'">
+                {{ user.status }}
+              </span>
+            </td>
+            <td>{{ user.lastUpdated }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" (click)="editUser(user)">✏️ Edit</button>
+            </td>
+          </tr>
+          <tr *ngIf="!users || users.length === 0">
+            <td colspan="7" class="text-center py-5 text-muted">
+              <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+              <h5 class="font-semibold">No Record/s Available</h5>
+              <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

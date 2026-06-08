@@ -1,0 +1,228 @@
+
+<div class="main-layout">
+  <!-- Sidebar -->
+  
+<div class="container">
+    <h1>Offline Policy Management</h1>
+  
+    <!-- Customer Details Section -->
+    <div class="card premium-card p-4 mb-4 shadow-sm border-0">
+      <div class="d-flex align-items-center mb-4 gap-2">
+        <h2>Add New Health Policy</h2>
+        <span class="divider">|</span>
+        <h3>Customer Details</h3>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="first-name">First Name*</label>
+          <input type="text" class="form-control" id="first-name" placeholder="First Name">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="last-name">Last Name*</label>
+          <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="mobile">Mobile*</label>
+          <input type="text" class="form-control" id="mobile" placeholder="Mobile">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="email">Email*</label>
+          <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="address">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="Address">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="state">State</label>
+          <select class="form-select" id="state">
+            <option>Select State</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="city">City</label>
+          <select class="form-select" id="city">
+            <option>Select City</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="pincode">Pincode</label>
+          <input type="text" class="form-control" id="pincode" placeholder="Pincode">
+        </div>
+      </div>
+    </div>
+  
+    <!-- Health / Policy Details Section -->
+    <div class="card premium-card p-4 mb-4 shadow-sm border-0">
+      <h3>Health / Policy Details</h3>
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="policy-type">Policy Type*</label>
+          <select class="form-select" id="policy-type">
+            <option>New</option>
+            <option>Renewal</option>
+            <option>Rollover</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="policy-cover">Policy Cover*</label>
+          <select class="form-select" id="policy-cover">
+            <option>Individual</option>
+            <option>Family Floater</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="insurance-company">Insurance Company</label>
+          <select class="form-select" id="insurance-company">
+            <option>Select Insurance Company</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="insurance-branch">Insurance Branch</label>
+          <select class="form-select" id="insurance-branch">
+            <option>Select Insurance Branch</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="sum-insured">Sum Insured</label>
+          <input type="text" class="form-control" id="sum-insured" placeholder="Sum Insured">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="max-age">Max Age*</label>
+          <input type="text" class="form-control" id="max-age" placeholder="Max Age">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="premium-no-gst">Premium without GST</label>
+          <input type="text" class="form-control" id="premium-no-gst" placeholder="Premium without GST">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="gst-amount">GST Amount</label>
+          <input type="text" class="form-control" id="gst-amount" placeholder="GST Amount">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="gross-premium">Gross Premium*</label>
+          <input type="text" class="form-control" id="gross-premium" placeholder="Gross Premium">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="issue-date">Issue Date</label>
+          <input type="date" class="form-control" id="issue-date">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="policy-start-date">Policy Start Date</label>
+          <input type="date" class="form-control" id="policy-start-date">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="policy-end-date">Policy End Date</label>
+          <input type="date" class="form-control" id="policy-end-date">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="select-end-year">Select End Year</label>
+          <select class="form-select" id="select-end-year">
+            <option>Select End Year</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="payment-mode">Payment Mode</label>
+          <select class="form-select" id="payment-mode">
+            <option>Select Payment Mode</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="transaction-number">Transaction Number</label>
+          <input type="text" class="form-control" id="transaction-number" placeholder="Transaction Number">
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="bank-name">Bank Name</label>
+          <input type="text" class="form-control" id="bank-name" placeholder="Bank Name">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="beneficiary-name">Beneficiary Name</label>
+          <input type="text" class="form-control" id="beneficiary-name" placeholder="Beneficiary Name">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="remarks">Remarks</label>
+          <textarea class="form-control" id="remarks" placeholder="Remarks"></textarea>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="level-2">Level 2</label>
+          <select class="form-select" id="level-2">
+            <option>Select Level 2</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="level-3">Level 3</label>
+          <select class="form-select" id="level-3">
+            <option>Select Level 3</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="level-4">Level 4</label>
+          <select class="form-select" id="level-4">
+            <option>Select Level 4</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="level-5">Level 5</label>
+          <select class="form-select" id="level-5">
+            <option>Select Level 5</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md">
+          <label class="form-label font-semibold" for="posp">POSP</label>
+          <select class="form-select" id="posp">
+            <option>Select POSP</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="policy-number">Policy Number*</label>
+          <input type="text" class="form-control" id="policy-number" placeholder="Policy Number">
+        </div>
+        <div class="col-md">
+          <label class="form-label font-semibold" for="policy-pdf">Policy PDF*</label>
+          <input type="file" class="form-control" id="policy-pdf">
+        </div>
+      </div>
+    </div>
+  
+    <!-- Submit Button -->
+    <div class="row mt-5 mb-5">
+      <div class="col-12 d-flex gap-3 justify-content-center">
+        <button type="submit" class="btn btn-primary px-5 py-2 shadow-sm font-semibold">Submit</button>
+        <button type="submit" class="btn btn-secondary px-5 py-2 shadow-sm font-semibold">Save & Send</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,89 @@
+<!-- ADMIN / VP / AVP Dashboard -->
+<div *ngIf="hasRole(['ADMIN', 'VP', 'AVP', 'SRR', 'CHECKER'])" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center">
+        <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-file-invoice"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Total Policies</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalPolicies }}</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center">
+        <div class="w-14 h-14 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-users"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Total Users</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalUsers }}</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center">
+        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-id-badge"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Active POSP</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ activePosp }}</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center">
+        <div class="w-14 h-14 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-handshake"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Total Clients</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalClients }}</h3>
+        </div>
+    </div>
+</div>
+
+<!-- USER Dashboard -->
+<div *ngIf="hasRole(['USER'])" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center cursor-pointer hover:shadow-md transition" (click)="redirectToMyPolicyViewAll()">
+        <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-file-contract"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">My Policies</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalPolicies }}</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center cursor-pointer hover:shadow-md transition" (click)="redirectToMyQuotationViewAll()">
+        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">My Quotations</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalQuotations }}</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center cursor-pointer hover:shadow-md transition" (click)="redirectToMyPolicyClaimViewAll()">
+        <div class="w-14 h-14 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-shield-alt"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">My Claims</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">View All</h3>
+        </div>
+    </div>
+</div>
+
+<!-- ACCOUNT MANAGER Dashboard -->
+<div *ngIf="hasRole(['ACCOUNT_MANAGER', 'MAKE_ENTRY'])" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center cursor-pointer hover:shadow-md transition" (click)="redirectToViewAll()">
+        <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-database"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Offline Data Entries</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">Manage</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center">
+        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-users"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Total Clients</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalClients }}</h3>
+        </div>
+    </div>
+    <div class="bg-white p-6 rounded-3xl shadow-premium-sm border border-gray-100 flex items-center">
+        <div class="w-14 h-14 rounded-2xl bg-green-50 text-green-500 flex items-center justify-center text-2xl mr-4"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div>
+            <p class="text-gray-500 text-sm font-semibold mb-1">Active Quotations</p>
+            <h3 class="text-2xl font-bold text-premium-dark mb-0">{{ totalQuotations }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white rounded-3xl shadow-premium-sm border border-gray-100 p-8 min-h-[400px]">
+    <h4 class="text-xl font-bold text-premium-dark mb-6">Recent Activity</h4>
+    <div class="text-center py-20 text-gray-400">
+        <i class="fas fa-chart-line text-6xl mb-4 opacity-20"></i>
+        <p>Dashboard content will appear here</p>
+    </div>
+</div>

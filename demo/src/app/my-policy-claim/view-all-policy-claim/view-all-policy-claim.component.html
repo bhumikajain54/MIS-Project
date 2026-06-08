@@ -1,0 +1,134 @@
+
+<div class="d-flex">
+  <!-- Sidebar -->
+  
+  <div class="container mt-4">
+    <div class="mb-2">Policy-Claim</div>
+    <form [formGroup]="policyClaimForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="policyNumber" class="form-label">Policy Number/Claim Number</label>
+          <input
+            type="text"
+            id="policyNumber"
+            formControlName="policyNumber"
+            class="form-control"
+            placeholder="Enter policy/claim number"
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="fromDate" class="form-label">From Date</label>
+          <input
+            type="date"
+            id="fromDate"
+            formControlName="fromDate"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="toDate" class="form-label">To Date</label>
+          <input
+            type="date"
+            id="toDate"
+            formControlName="toDate"
+            class="form-control"
+          />
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="productType" class="form-label">Product Type</label>
+          <select id="productType" formControlName="productType" class="form-select">
+            <option value="">Please Select</option>
+            <option *ngFor="let product of productTypes" [value]="product">{{ product }}</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="insuranceCompany" class="form-label">Insurance Company</label>
+          <select id="insuranceCompany" formControlName="insuranceCompany" class="form-select">
+            <option value="">Please Select</option>
+            <option *ngFor="let company of insuranceCompanies" [value]="company">{{ company }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-3" *ngFor="let level of levels; let i = index">
+          <label [for]="'level' + (i + 1)" class="form-label">Level {{ i + 1 }}</label>
+          <select
+            [id]="'level' + (i + 1)"
+            [formControlName]="'level' + (i + 1)"
+            class="form-select"
+          >
+            <option value="">Select Level {{ i + 1 }}</option>
+            <option *ngFor="let option of levelOptions" [value]="option">{{ option }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="posp" class="form-label">POSP</label>
+          <select id="posp" formControlName="posp" class="form-select">
+            <option value="">Select POSP</option>
+            <option *ngFor="let posp of pospList" [value]="posp">{{ posp }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12 mt-2 d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4 shadow-sm">Search</button>
+          <button type="button" class="btn btn-secondary px-4 shadow-sm" (click)="onExport()">Export</button>
+          <button type="button" class="btn btn-danger px-4 shadow-sm" (click)="onReset()">Reset</button>
+        </div>
+      </div>
+    </form>
+  
+    <!-- Search Results Section -->
+    <div class="card premium-card mt-5 shadow-sm border-0">
+      <div class="card-header bg-premium-dark text-white rounded-t-lg d-flex justify-content-between align-items-center p-3">
+        <h5 class="mb-0 font-semibold"><i class="fas fa-list-alt me-2"></i> Claim Results</h5>
+        <span class="badge bg-primary px-3 py-2" style="font-size: 0.9rem;">Total Count: {{ records.length }}</span>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-hover table-striped mb-0">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Policy Number</th>
+              <th>Claim Number</th>
+              <th>Customer Name</th>
+              <th>Insurance Company</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of records; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ record.policyNumber }}</td>
+              <td>{{ record.claimNumber }}</td>
+              <td>{{ record.customerName }}</td>
+              <td>{{ record.insuranceCompany }}</td>
+              <td>
+                <span class="badge bg-success" *ngIf="record.status === 'Approved'">Approved</span>
+                <span class="badge bg-warning" *ngIf="record.status === 'Pending'">Pending</span>
+                <span class="badge bg-danger" *ngIf="record.status === 'Rejected'">Rejected</span>
+              </td>
+              <td><button class="btn btn-sm btn-primary">View</button></td>
+            </tr>
+            <tr *ngIf="!records || records.length === 0">
+              <td colspan="7" class="text-center py-5 text-muted">
+                <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                <h5 class="font-semibold">No Record/s Available</h5>
+                <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>  
+</div>

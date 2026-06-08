@@ -1,0 +1,170 @@
+<div class="container mt-4" *ngIf="policies">
+  <h1>Policy Management</h1>
+  <form>
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="keyword" class="form-label">Keyword</label>
+        <input type="text" id="keyword" class="form-control" [(ngModel)]="searchKeyword" placeholder="Enter keyword"
+          name="keyword">
+      </div>
+      <div class="col-md-3">
+        <label for="policyIssueFromType" class="form-label">Policy Option</label>
+        <div class="d-flex">
+          <select id="policyIssueFromType" class="form-select me-2" [(ngModel)]="selectedIssueType"
+            name="policyIssueFromType">
+            <option value="Policy Issue">Policy Issue</option>
+            <option value="Policy Start">Policy Start</option>
+          </select>
+          <input type="date" id="policyIssueFrom" class="form-control" [(ngModel)]="policyIssueFrom"
+            name="policyIssueFrom">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="policyIssueTo" class="form-label">Policy Issue To Date</label>
+        <input type="date" id="policyIssueTo" class="form-control" [(ngModel)]="policyIssueFrom" name="policyIssueTo">
+      </div>
+      <div class="col-md-3">
+        <label for="productType" class="form-label">Product Type</label>
+        <select id="productType" class="form-select" [(ngModel)]="selectedProductType" name="productType">
+          <option value="">Please Select</option>
+          <option *ngFor="let type of productTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="insuranceCompany" class="form-label">Insurance Company</label>
+        <select id="insuranceCompany" class="form-select" [(ngModel)]="selectedInsuranceCompany"
+          name="insuranceCompany">
+          <option value="">Please Select</option>
+          <option *ngFor="let company of insuranceCompanies" [value]="company">{{ company }}</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="issueBy" class="form-label">Issue By</label>
+        <select id="issueBy" class="form-select" [(ngModel)]="issueBy" name="issueBy">
+          <option value="all">All Users</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="level2" class="form-label">Level 2</label>
+        <select id="level2" class="form-select" [(ngModel)]="level2" name="level2">
+          <option value="">Select Level 2</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="level3" class="form-label">Level 3</label>
+        <select id="level3" class="form-select" [(ngModel)]="level3" name="level3">
+          <option value="">Select Level 3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <label for="level4" class="form-label">Level 4</label>
+        <select id="level4" class="form-select" [(ngModel)]="level4" name="level4">
+          <option value="">Select Level 4</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="level5" class="form-label">Level 5</label>
+        <select id="level5" class="form-select" [(ngModel)]="level5" name="level5">
+          <option value="">Select Level 5</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="posp" class="form-label">POSP</label>
+        <select id="posp" class="form-select" [(ngModel)]="posp" name="posp">
+          <option value="">Select POSP</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="policySource" class="form-label">Policy Source</label>
+        <select id="policySource" class="form-select" [(ngModel)]="policySource" name="policySource">
+          <option value="">Select Policy Source</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-4 text-center">
+      <div class="col">
+        <button type="button" class="btn btn-primary me-2" (click)="searchPolicies()">Search</button>
+        <button type="button" class="btn btn-secondary me-2" (click)="ExportPolicies()">Export</button>
+        <button type="button" class="btn btn-secondary me-2" (click)="fileInput.click()">Import</button>
+        <input type="file" #fileInput (change)="onFileSelected($event)" accept=".xlsx, .xls, .pdf"
+          style="display: none;" />
+        <button type="reset" class="btn btn-danger">Reset</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row mt-5 mb-3">
+    <div class="col-md-4">
+      <div class="premium-card p-3 d-flex align-items-center justify-content-between border-start border-primary border-4">
+        <div>
+          <p class="text-muted mb-0 small text-uppercase font-bold">Total Policies</p>
+          <h4 class="mb-0 font-bold text-dark">{{ policyCount }}</h4>
+        </div>
+        <div class="bg-primary bg-opacity-10 p-3 rounded-circle text-primary">
+          <i class="fas fa-file-contract"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="premium-card p-3 d-flex align-items-center justify-content-between border-start border-info border-4">
+        <div>
+          <p class="text-muted mb-0 small text-uppercase font-bold">Net Premium</p>
+          <h4 class="mb-0 font-bold text-dark">₹{{ netPremium }}</h4>
+        </div>
+        <div class="bg-info bg-opacity-10 p-3 rounded-circle text-info">
+          <i class="fas fa-chart-line"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="premium-card p-3 d-flex align-items-center justify-content-between border-start border-success border-4">
+        <div>
+          <p class="text-muted mb-0 small text-uppercase font-bold">Gross Premium</p>
+          <h4 class="mb-0 font-bold text-dark">₹{{ grossPremium }}</h4>
+        </div>
+        <div class="bg-success bg-opacity-10 p-3 rounded-circle text-success">
+          <i class="fas fa-rupee-sign"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-hover table-striped premium-card mt-4">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Policy Number</th>
+        <th>Client Name</th>
+        <th>Insurance Companies</th>
+        <th>Policy Start Date</th>
+        <th>Policy Expiry Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of posts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ policy.policyNumber }}</td>
+        <td>{{ policy.clientName }}</td>
+        <td>{{ policy.insuranceCompanies }}</td>
+        <td>{{ policy.policyStartDate | date:'yyyy-MM-dd' }}</td>
+        <td>{{ policy.policyExpiryDate | date:'yyyy-MM-dd' }}</td>
+        <td><button (click)="viewPolicy(policy)" class="btn btn-sm btn-primary">View</button></td>
+      </tr>
+      <tr *ngIf="!posts || posts.length === 0">
+        <td colspan="7" class="text-center py-5 text-muted">
+          <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+          <h5 class="font-semibold">No Record/s Available</h5>
+          <p class="text-sm mb-0">Try adjusting your search filters to find what you're looking for.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

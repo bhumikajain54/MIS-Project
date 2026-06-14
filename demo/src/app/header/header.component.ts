@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,8 +6,20 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
+  isMenuOpen = false;
+  isPagesMenuOpen = false;
+
   constructor(private router: Router) {
 
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  togglePagesMenu(event: Event) {
+    event.preventDefault();
+    this.isPagesMenuOpen = !this.isPagesMenuOpen;
   }
   navLinks = [
     { label: 'Home', path: '/' },

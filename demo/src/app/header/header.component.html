@@ -4,24 +4,26 @@
         <div class="w-7/12 text-left flex items-center">
             <div class="h-full inline-flex items-center mr-6">
                 <img class="h-5" src="../../assets/image/icon/phone.png" alt="">
-                <small class="ml-2 text-white">+91 8104988600/8104988602</small>
+                <a href="tel:+918104988600"
+                    class="ml-2 text-white no-underline hover:text-premium-primary-hover transition-colors text-sm">+91
+                    8104988600</a>
+                <span class="text-white mx-1 text-sm">/</span>
+                <a href="tel:+918104988602"
+                    class="text-white no-underline hover:text-premium-primary-hover transition-colors text-sm">8104988602</a>
             </div>
             <div class="h-full inline-flex items-center mr-6">
-                <img class="h-5" src="../../assets/image/icon/email.png" alt="">
-                <a href="mailto:customercare&#64;lordsmark.com"
-                    class="text-white ml-2 no-underline hover:text-premium-primary-hover transition-colors">customercare&#64;lordsmark.com</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=customercare@lordsmark.com" target="_blank" rel="noopener noreferrer"
+                    class="text-white no-underline hover:text-premium-primary-hover transition-colors flex items-center">
+                    <img class="h-5" src="../../assets/image/icon/email.png" alt="">
+                    <span class="ml-2">customercare&#64;lordsmark.com</span>
+                </a>
             </div>
         </div>
         <div class="w-5/12 text-right flex items-center justify-end">
             <div class="h-full inline-flex items-center">
-                <a class="text-white/50 hover:text-white ml-6 transition-colors" href=""><img class="h-5"
-                        src="../../assets/image/facebook.png" alt=""></a>
-                <a class="text-white/50 hover:text-white ml-6 transition-colors" href=""><img class="h-5"
-                        src="../../assets/image/instagram.png" alt=""></a>
-                <a class="text-white/50 hover:text-white ml-6 transition-colors" href=""><img class="h-5"
-                        src="../../assets/image/Linkedin.png" alt=""></a>
-                <a class="text-white/50 hover:text-white ml-6 transition-colors" href=""><img class="h-5"
-                        src="../../assets/image/twitter.png" alt=""></a>
+                <a class="text-white/50 hover:text-white ml-6 transition-colors" href="https://www.facebook.com/lordsmarkinsurance/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f text-lg"></i></a>
+                <a class="text-white/50 hover:text-white ml-6 transition-colors" href="https://www.youtube.com/@lordsmarkindustries" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube text-lg"></i></a>
+                <a class="text-white/50 hover:text-white ml-6 transition-colors" href="https://www.linkedin.com/company/lords-mark-insurance-broking-services/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in text-lg"></i></a>
             </div>
         </div>
     </div>
@@ -43,7 +45,9 @@
         </svg>
     </button>
 
-    <div [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}" class="lg:flex lg:items-center w-full lg:w-auto lg:flex-1 border-t border-gray-100 lg:border-t-0" id="navbarCollapse">
+    <div [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}"
+        class="lg:flex lg:items-center w-full lg:w-auto lg:flex-1 border-t border-gray-100 lg:border-t-0"
+        id="navbarCollapse">
         <div class="flex flex-col lg:flex-row lg:ml-auto font-medium lg:items-center w-full lg:w-auto">
             <a routerLink="/"
                 class="block text-gray-700 hover:text-premium-primary hover:bg-gray-50 lg:hover:bg-transparent border-b border-gray-100 lg:border-b-0 no-underline px-6 lg:px-3 py-2 lg:py-1 lg:ml-6 transition-colors text-base lg:text-sm">Home</a>
@@ -58,7 +62,9 @@
                 <a href="#" (click)="togglePagesMenu($event)"
                     class="block text-gray-700 hover:text-premium-primary hover:bg-gray-50 lg:hover:bg-transparent no-underline px-6 lg:px-3 py-2 lg:py-1 lg:ml-6 flex items-center justify-between lg:justify-start transition-colors text-base lg:text-sm">
                     Pages
-                    <svg class="w-4 h-4 lg:w-3 lg:h-3 ml-1 transition-transform duration-300" [ngClass]="{'rotate-180': isPagesMenuOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 lg:w-3 lg:h-3 ml-1 transition-transform duration-300"
+                        [ngClass]="{'rotate-180': isPagesMenuOpen}" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </a>
@@ -87,6 +93,7 @@
         </div>
     </div>
 
-    <a routerLink="/quote" class="btn-premium hidden lg:block shrink-0 ml-6 no-underline text-white" style="padding: 4px 12px; font-size: 0.75rem;">Get A Quote</a>
+    <a routerLink="/quote" class="btn-premium hidden lg:block shrink-0 ml-6 no-underline text-white"
+        style="padding: 4px 12px; font-size: 0.75rem;">Get A Quote</a>
 </nav>
 <!-- Navbar End -->

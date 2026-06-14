@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Optional;
 
-@SuppressWarnings("null")
+
 public class ApplicationAuditAware implements AuditorAware<Integer> {
     @Override
     public Optional<Integer> getCurrentAuditor() {

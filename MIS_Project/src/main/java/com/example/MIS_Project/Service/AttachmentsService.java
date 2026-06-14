@@ -1,4 +1,5 @@
 package com.example.MIS_Project.Service;
+
 import com.example.MIS_Project.Model.Attachments;
 import com.example.MIS_Project.Repository.AttachmentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@SuppressWarnings("null")
 public class AttachmentsService {
 
     @Autowired
@@ -39,4 +39,3 @@ public class AttachmentsService {
         attachmentsRepository.deleteById(id);
     }
 }
-

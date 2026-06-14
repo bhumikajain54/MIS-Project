@@ -15,7 +15,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/")
-@SuppressWarnings("null")
 public class AccountManagerController {
 
 	@Autowired

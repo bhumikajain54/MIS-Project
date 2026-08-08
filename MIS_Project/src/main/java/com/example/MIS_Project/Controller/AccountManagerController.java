@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@SuppressWarnings("null")
 @RequestMapping("/api/v1/")
 public class AccountManagerController {
 

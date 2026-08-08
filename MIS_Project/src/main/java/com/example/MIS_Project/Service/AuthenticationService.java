@@ -22,7 +22,7 @@ import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
-
+@SuppressWarnings("null")
 public class AuthenticationService {
   private final UserRepository repository;
   private final TokenRepository tokenRepository;

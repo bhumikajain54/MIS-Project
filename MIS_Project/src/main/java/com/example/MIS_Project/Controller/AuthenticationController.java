@@ -42,5 +42,17 @@ public class AuthenticationController {
     service.refreshToken(request, response);
   }
 
+  @PostMapping("/forgot-password")
+  public ResponseEntity<?> forgotPassword(
+      @RequestBody com.example.MIS_Project.auth.ForgotPasswordRequest request
+  ) {
+    return ResponseEntity.ok(service.forgotPassword(request));
+  }
 
+  @PostMapping("/reset-password-otp")
+  public ResponseEntity<?> resetPasswordWithOtp(
+      @RequestBody com.example.MIS_Project.auth.ResetPasswordRequest request
+  ) {
+    return ResponseEntity.ok(service.resetPasswordWithOtp(request));
+  }
 }

@@ -29,6 +29,7 @@ public class AuthenticationService {
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
+  private final EmailService emailService;
 
   public AuthenticationResponse register(RegisterRequest request) {
     if (repository.findByEmail(request.getEmail()).isPresent()) {
@@ -144,5 +145,40 @@ public class AuthenticationService {
         new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
       }
     }
+  }
+
+  private final java.util.concurrent.ConcurrentHashMap<String, String> otpStorage = new java.util.concurrent.ConcurrentHashMap<>();
+
+  public java.util.Map<String, String> forgotPassword(com.example.MIS_Project.auth.ForgotPasswordRequest request) {
+    var user = repository.findByEmail(request.getEmail())
+        .orElseThrow(() -> new IllegalArgumentException("User with email " + request.getEmail() + " does not exist."));
+
+    String recipient = (request.getRecipientEmail() != null && !request.getRecipientEmail().trim().isEmpty())
+        ? request.getRecipientEmail().trim()
+        : user.getEmail();
+
+    String otp = String.format("%06d", new java.security.SecureRandom().nextInt(900000) + 100000);
+    otpStorage.put(user.getEmail().toLowerCase(), otp);
+
+    emailService.sendOtpEmail(recipient, otp);
+
+    return java.util.Map.of("message", "OTP code has been sent successfully to " + recipient);
+  }
+
+  public java.util.Map<String, String> resetPasswordWithOtp(com.example.MIS_Project.auth.ResetPasswordRequest request) {
+    var user = repository.findByEmail(request.getEmail())
+        .orElseThrow(() -> new IllegalArgumentException("User with email " + request.getEmail() + " does not exist."));
+
+    String storedOtp = otpStorage.get(user.getEmail().toLowerCase());
+    if (storedOtp == null || !storedOtp.equals(request.getOtp() != null ? request.getOtp().trim() : "")) {
+      throw new IllegalArgumentException("Invalid or expired OTP code.");
+    }
+
+    user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+    repository.save(user);
+
+    otpStorage.remove(user.getEmail().toLowerCase());
+
+    return java.util.Map.of("message", "Password reset successfully. You can now log in with your new password.");
   }
 }

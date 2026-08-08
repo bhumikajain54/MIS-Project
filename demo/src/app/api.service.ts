@@ -39,6 +39,14 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}auth/register`, data, { headers: this.getAuthHeaders() });
   }
 
+  forgotPassword(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}auth/forgot-password`, data);
+  }
+
+  resetPasswordWithOtp(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}auth/reset-password-otp`, data);
+  }
+
   createClient(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}client`, data, { headers: this.getAuthHeaders() });
 }

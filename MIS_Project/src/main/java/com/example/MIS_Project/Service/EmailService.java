@@ -54,5 +54,38 @@ public class EmailService {
             e.printStackTrace();
         }
     }
+
+    public void sendPasswordResetEmail(String recipientEmail, String tempPassword) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setTo(recipientEmail);
+            helper.setSubject("MIS Insurance Portal - Password Reset");
+            helper.setText("Dear User,\n\nYour password has been reset. Your temporary password is:\n\n" 
+                    + tempPassword + "\n\nPlease login using this password and change it under settings.\n\nRegards,\nMIS Team");
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendOtpEmail(String recipientEmail, String otpCode) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setTo(recipientEmail);
+            helper.setSubject("MIS Insurance Portal - Password Reset OTP Code");
+            helper.setText("Dear User,\n\nYour OTP for resetting your password is:\n\n" 
+                    + otpCode + "\n\nThis OTP is valid for 10 minutes. Do not share this OTP with anyone.\n\nRegards,\nMIS Team");
+
+            mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Failed to send OTP email. Please check email address or server mail settings: " + (e.getCause() != null ? e.getCause().getMessage() : e.getMessage()));
+        }
+    }
 }
 
